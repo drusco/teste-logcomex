@@ -24,7 +24,7 @@ cd teste-logcomex
 Crie seu arquivo de ambiente:
 
 ```
-cp .env.example .env
+cp laravel-app/.env.example laravel-app/.env
 ```
 
 Construa e inicie a aplicação:
