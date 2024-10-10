@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel_app
+    container_name: laravel_app
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+
+  webserver:
+    image: nginx:alpine
+    container_name: nginx_web
+    ports:
+      - "9000:80"
+    volumes:
+      - .:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootLoggerTest
+      MYSQL_DATABASE: logcomex
+      MYSQL_USER: pedro
+      MYSQL_PASSWORD: teste1234
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+
