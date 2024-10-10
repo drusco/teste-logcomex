@@ -71,6 +71,12 @@ docker exec -it laravel_app php artisan app:import-pokemons
 GET http://localhost:9000/api/pokemon
 ```
 
+- Pesquisar pelo nome, tipo ou ambos
+
+```
+GET http://localhost:9000/api/pokemon/?nome=bulbasaur&tipo=grass
+```
+
 - Ver detalhes de um pokémon:
 
 ```
