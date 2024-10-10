@@ -22,10 +22,6 @@ WORKDIR /var/www/laravel-app
 # Copy the application code to the container
 COPY . .
 
-# Set appropriate permissions for the working directory
-RUN chown -R www-data:www-data /var/www/laravel-app \
-    && chmod -R 755 /var/www/laravel-app
-
 # Expose port 9000
 EXPOSE 9000
 

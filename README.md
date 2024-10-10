@@ -33,9 +33,22 @@ Construa e inicie a aplicação:
 docker-compose up --build -d
 ```
 
-Instale as dependencias
+Instalar as dependencias
 ```
 docker exec -it laravel_app composer install
+```
+
+Configurar permissões em diretórios
+
+```
+docker exec -it laravel_app bash -c "chown -R www-data:www-data /var/www/laravel-app/storage /var/www/laravel-app/bootstrap/cache && chmod -R 775 /var/www/laravel-app/storage /var/www/laravel-app/bootstrap/cache"
+
+```
+
+Gerar encription key
+
+```
+docker exec -it laravel_app php artisan key:generate
 ```
 
 Execute as migrações (aguarde até o MySQL estar totalmente em execução):
@@ -63,3 +76,4 @@ GET http://localhost:9000/api/pokemon
 ```
 GET http://localhost:9000/api/pokemon/{id}
 ```
+
