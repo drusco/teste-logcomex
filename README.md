@@ -33,6 +33,11 @@ Construa e inicie a aplicação:
 docker-compose up --build -d
 ```
 
+Instale as dependencias
+```
+docker exec -it laravel_app composer install
+```
+
 Execute as migrações (aguarde até o MySQL estar totalmente em execução):
 
 ```
